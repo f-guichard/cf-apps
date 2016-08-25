@@ -1,0 +1,8 @@
+---
+applications:
+- name: webpaint
+  memory: 64M
+  instances: 1
+  host: paint-server
+  path: .
+  buildpack: go_buildpack
