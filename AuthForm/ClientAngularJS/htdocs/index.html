@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="fr" ng-app="module_eui">
+  <head>
+    <title>Pour continuer, identifiez-vous...</title>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css"/>
+    <script src="js/angular.min.js"></script>
+    <script src="js/formControler.js"></script> 
+  </head>
+
+  <body ng-controller="euiController as euic">
+    <div>
+      <form name="newEuiForm" ng-submit="euic.validateForm()">
+        adresse mail : 
+        <input type="email" name="credential" placeholder= {{euic.infos.mail}} autofocus required ><br>
+        Mot de passe : 
+        <input type="password" name="password"><br>
+        <input type="submit" value="S'identifier">
+      </form> 
+    </div>
+  </body>
+</html>

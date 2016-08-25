@@ -1,0 +1,15 @@
+---
+applications:
+- name: AnguForm
+  memory: 64M
+  disk_quota: 128M
+  instances: 8
+  hosts:
+  - anguform1
+  - anguform2
+  - anguform3
+  domain: myshareddomin.net 
+  path: .
+  buildpack: php_buildpack
+  env:
+    STAGE: "DEV"
