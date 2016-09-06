@@ -1,0 +1,9 @@
+{
+  "name": "php-redis-sample",
+  "description": "description_text",
+  "license": "APACHE 2.0",
+  "require": {
+    "ext-redis": "*",
+    "php": "5.6.*"
+  }
+}

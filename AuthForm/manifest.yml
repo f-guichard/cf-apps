@@ -1,0 +1,29 @@
+---
+applications:
+- name: api-nodejs
+  memory: 256M
+  instances: 2
+  path: ./Back-ServerNJS/
+  buildpack: nodejs_buildpack
+  disk_quota: 1024M
+  hosts:
+  - apiserverjs1
+  - apiserverjs2
+  - apiserverjs3
+  - apiserverjs4
+  services:
+  - redis
+- name: api-php7
+  memory: 256M
+  instances: 2
+  path: ./Back-ServerPHP7/
+  buildpack: php_buildpack
+  disk_quota: 1024M
+  hosts:
+  - apiserverphp1
+  - apiserverphp2
+  - apiserverphp3
+  - apiserverphp4
+  services:
+  - redis
+

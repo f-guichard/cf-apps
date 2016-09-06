@@ -1,0 +1,7 @@
+---
+applications:
+- name: chatty-server
+  memory: 64M
+  instances: 1
+  path: .
+  buildpack: go_buildpack

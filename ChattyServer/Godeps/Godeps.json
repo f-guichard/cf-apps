@@ -1,0 +1,6 @@
+{
+	"ImportPath": "Verbose-Server",
+	"GoVersion": "go1.6",
+	"GodepVersion": "v74",
+	"Deps": []
+}

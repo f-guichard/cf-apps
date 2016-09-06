@@ -1,0 +1,13 @@
+---
+applications:
+- name: front-nodejs
+  command: node servingserver.js
+  buildpack: nodejs_buildpack
+  instances : 4
+  memory : 128M
+  disk_quota: 128M
+  hosts:
+  - frontnjs1
+  - frontnjs2
+  - frontnjs3
+  path: ./app

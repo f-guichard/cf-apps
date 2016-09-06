@@ -1,0 +1,14 @@
+{
+  "name": "ServerNJS",
+  "version": "1.0.0",
+  "description": "Server API NodeJS",
+  "main": "apiserver.js",
+  "dependencies": {
+    "httpdispatcher": "^1.0.0",
+    "nsp": "^2.6.1",
+    "express": "3.x"
+  },
+  "keywords": [],
+  "author": "Fabien Guichard",
+  "license": "Apachev2"
+}

@@ -1,0 +1,82 @@
+var express = require('express');
+var redis = require('redis');
+
+var time = new Date().getTime();
+
+var httpserver = new express();
+
+//Change this
+vcapSenv = process.env.VCAP_SERVICES;
+    vcapValue = {};
+    if (vcapSenv!= null) {
+      try {
+        vcapValue = JSON.parse(vcapSenv);
+      } catch (error) {
+        e = error;
+        throwError("env var VCAP_SERVICES is not JSON: /" + vcapSenv + "/");
+      }
+    }
+
+//Change this
+//suppose envValue like {"uri":"redis://:mypass@10.77.105.151:6379/0","pass":"mypass","hostname":"10.77.105.151","port":"6379"}
+var redis_client = redis.createClient({
+    host: vcapValue.hostname,
+    port: vcapValue.port,
+    password: vcapValue.password
+});
+
+redis_client.on("error", function (error) {
+   console.log("Erreur Redis : " + error);
+});
+
+var call = 0;
+
+httpserver.get("/health", function(req, res) {
+   var Client = req.socket['remoteAddress']+":"+req.socket['remotePort'];
+   redis_client.set(call, Client, function (err, resp) {
+     console.log("Jecris " + call + ":" + Client);
+   });
+
+   res.send({"health": "OK", "call": call});
+   call += 1;
+   console.log("Sending health state OK to "+Client);
+});
+
+httpserver.get("/services", function(req, res) {
+   var vcap_services = JSON.parse(process.env.VCAP_SERVICES);
+   if (vcap_services != null) {
+     res.send({"vcap_services": vcap_services});
+   }
+   else {
+     res.send({"vcap_services": "null"});
+   }
+}); 
+
+httpserver.get("/application", function(req, res) {
+   var vcap_services = JSON.parse(process.env.VCAP_APPLICATION);
+   if (vcap_services != null) {
+     res.send({"vcap_application": vcap_application});
+   }
+   else {
+     res.send({"vcap_application": "null"});
+   }
+});
+
+httpserver.get("/redis/get/:key", function(req, res) {
+   if (redis_client != null && redis_client.exists(key)) {
+     var keyval = redis_client.get(key, function (err, resp) {
+     console.log("Je recupere " + resp.redis_debug);
+   });
+
+   res.send({ key : keyval});
+   }
+   else {
+     res.send({});
+  }
+
+});
+
+
+
+//Support CF & Legacy
+httpserver.listen(process.env.PORT || 8000);

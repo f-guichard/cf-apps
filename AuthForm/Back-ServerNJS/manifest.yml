@@ -1,0 +1,14 @@
+---
+applications:
+- name: api-nodejs
+  command: node apiserver.js
+  buildpack: nodejs_buildpack
+  instances : 4
+  memory : 256M
+  disk_quota: 128M
+  path: .
+  hosts:
+  - apiserver1
+  - apiserver2
+  - apiserver3
+  - apiserver4
