@@ -8,7 +8,6 @@ applications:
   - anguform1
   - anguform2
   - anguform3
-  domain: myshareddomin.net 
   path: .
   buildpack: php_buildpack
   env:

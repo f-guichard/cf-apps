@@ -1,6 +1,6 @@
 (function (){
 
-   var infos = { description : 'adresse mail eui', mail : 'eui@orange.fr' };
+   var infos = { description : 'adresse mail eui', mail : 'v1@orange.fr' };
 
    var euimod = angular.module('module_eui', []);
 
