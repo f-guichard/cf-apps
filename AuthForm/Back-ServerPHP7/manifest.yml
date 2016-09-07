@@ -1,0 +1,11 @@
+---
+applications:
+- name: api-php
+  memory: 256M
+  instances: 2
+  path: .
+  buildpack: php_buildpack_4_3_18
+  disk_quota: 256M
+  services:
+  - redis
+

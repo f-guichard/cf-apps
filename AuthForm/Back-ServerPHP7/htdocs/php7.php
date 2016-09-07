@@ -14,11 +14,11 @@
     echo php7strictString(7);
     echo unknownfunction();
   }
-  catch (EngineException exp)
+  catch (EngineException $exp)
   {
     echo var_dump($exp);
   }
-  catch (TypeException exp)
+  catch (TypeError $exp)
   {
     echo var_dump($exp);
   }
