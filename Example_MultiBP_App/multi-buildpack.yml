@@ -1,0 +1,4 @@
+buildpacks:
+  - python_buildpack
+  - java_buildpack
+  - go_buildpack

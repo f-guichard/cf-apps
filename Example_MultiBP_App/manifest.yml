@@ -1,0 +1,6 @@
+---
+applications:
+- name: polyglotte
+  buildpack: multi_buildpack
+  memory: 1G
+path: ./
