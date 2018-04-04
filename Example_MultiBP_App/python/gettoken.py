@@ -29,4 +29,23 @@ try:
         TokenFile.write(json.dumps(Token.json(), indent=6))
 except Exception as exc:
     print(exc)
-    exit(-1) 
+    exit(-1)
+
+#list catalog items
+#https://docs.vmware.com/en/vRealize-Automation/7.3/com.vmware.vra.programming.doc/GUID-41B9F325-31A3-4756-A9E1-F4E10C23E87F.html
+VraResponse = Token.json()
+headers = {'Authorization':'Bearer '+VraResponse['id']}
+Catalog = requests.get('CatalogUrl', headers=headers, verify=False)
+
+#Dump query
+#print vars(Catalog)
+print '========================= Response ==============================='
+print Catalog.content
+print Catalog.json()
+
+CatalogResponse = Catalog.json()
+print 'Contenu Catalogue : ' + CatalogResponse['content'][0]['description']
+print '======================== Get Network Profile ====================='
+NetworkProfiles = requests.get('vra/iaas-proxy-provider/api/network/profiles', headers=headers, verify=False)
+print NetworkProfiles.content
+print NetworkProfiles.json()
